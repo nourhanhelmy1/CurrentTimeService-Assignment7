@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Time Service</title>
+</head>
+<body>
+    <h2 id="currentTime">Loading...</h2>
+
+    <script>
+        async function fetchCurrentTime() {
+            try {
+                const response = await fetch('/api/currentTime');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch current time.');
+                }
+                const data = await response.json();
+                document.getElementById('currentTime').textContent = data.dateTime;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('currentTime').textContent = 'Failed to fetch current time.';
+            }
+        }
+
+        fetchCurrentTime();
+    </script>
+</body>
+</html>
