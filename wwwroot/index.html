@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Current Time Service</title>
@@ -7,6 +7,10 @@
     <h2 id="currentTime">Loading...</h2>
 
     <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            fetchCurrentTime();
+        });
+
         async function fetchCurrentTime() {
             try {
                 const response = await fetch('/api/currentTime');
@@ -20,8 +24,6 @@
                 document.getElementById('currentTime').textContent = 'Failed to fetch current time.';
             }
         }
-
-        fetchCurrentTime();
     </script>
 </body>
 </html>
